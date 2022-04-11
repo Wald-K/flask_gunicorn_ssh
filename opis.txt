@@ -1,0 +1,11 @@
+Na podstawie artykulu https://dev.to/chand1012/how-to-host-a-flask-server-with-gunicorn-and-https-942
+(aplikacja flask+gunicorn+nginx wykorzystujący szyfrowaną transmisję ssl)
+
+Do tego skonfigurowano pracę aplikacji w dokerze, z wykorzystaniem połaczenia ssl do kontenera nginx-a.
+Sama aplikacja jest także uruchomiona w kontenerze webservice.
+
+
+Ruch sieciowy z localhost:80 jest redirectowany na localhost:443 (na https) i dalej
+poprzez reverse proxy nginx-a jest przekierowywany do kontenera webservice, gdzie:
+- w środowisku deweloperskim uruchomiona jest instalncja aplikacji flask na porcie 8080
+- w środowisku produkcyjnym uruchomiony jest kontener aplikacji gunicorn na porcie 8080
